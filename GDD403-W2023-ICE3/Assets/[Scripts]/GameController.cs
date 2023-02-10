@@ -7,6 +7,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StandardDeck deck = new StandardDeck();
+        StandardDeck deck = new StandardDeck(); // example of composition
     }
 }
