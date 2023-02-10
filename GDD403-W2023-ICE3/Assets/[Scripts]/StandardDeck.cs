@@ -10,12 +10,15 @@ public class StandardDeck : Stack<GameObject>
     private readonly string[] _ranks;
     private List<GameObject> _cardPrefabs;
 
+    private Transform _cardParent;
+
     // Constructor
     public StandardDeck()
     {
         _suits = new[] { "Club", "Diamond", "Heart", "Spade" };
         _ranks = new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "A", "J", "Q", "K" };
         _cardPrefabs = new List<GameObject>(); // creates an empty container of List<GameObject> type
+        _cardParent = GameObject.Find("[CARDS]").transform;
 
         Load();
         Initialize();
@@ -30,6 +33,8 @@ public class StandardDeck : Stack<GameObject>
         {
             var tempCard = MonoBehaviour.Instantiate(card);
             tempCard.SetActive(false);
+            tempCard.name = card.name;
+            tempCard.transform.SetParent(_cardParent);
             Push(tempCard);
         }
         
@@ -58,10 +63,15 @@ public class StandardDeck : Stack<GameObject>
     {
         for (var i = 0; i < _suits.Length; i++)
         {
-            var cardPrefab = Resources.Load<GameObject>($"Prefabs/Card/{_suits[i]}_{_ranks[i]}");
-            var card = MonoBehaviour.Instantiate(cardPrefab);
-            card.SetActive(false);
-            _cardPrefabs.Add(card);
+            for (var j = 0; j < _ranks.Length; j++)
+            {
+                var cardPrefab = Resources.Load<GameObject>($"Prefabs/Cards/{_suits[i]}_{_ranks[j]}");
+                var card = MonoBehaviour.Instantiate(cardPrefab);
+                card.SetActive(false);
+                card.transform.SetParent(_cardParent);
+                card.name = $"{_suits[i]}_{_ranks[j]}";
+                _cardPrefabs.Add(card);
+            }
         }
     }
 }
