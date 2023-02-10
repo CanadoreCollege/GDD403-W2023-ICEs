@@ -188,19 +188,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -212,7 +212,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688919279192673951, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
+      propertyPath: selectionColour.b
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688919279192673951, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
+      propertyPath: selectionColour.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688919279192673951, guid: 98a78d82c478c184f84ed57dd7de6306, type: 3}
+      propertyPath: selectionColour.r
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -341,6 +353,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 28985543}
     m_Modifications:
+    - target: {fileID: -4761983236303230653, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
+      propertyPath: selectionColour.b
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4761983236303230653, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
+      propertyPath: selectionColour.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4761983236303230653, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
+      propertyPath: selectionColour.r
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
       propertyPath: m_Name
       value: Heart_A
@@ -363,19 +387,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -387,7 +411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 418abdf0f304738438da65b80aa0ae9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -513,8 +537,16 @@ MonoBehaviour:
   TargetRenderer: {fileID: 0}
   lastTarget: {fileID: 0}
   ChildrenRenderers: []
-  OutlineColor: {r: 0.19112396, g: 1, b: 0, a: 1}
-  OccludedColor: {r: 0.5, g: 0.9, b: 0.3, a: 1}
+  OutlineColor:
+    r: 0.19112396
+    g: 1
+    b: 0
+    a: 1
+  OccludedColor:
+    r: 0.5
+    g: 0.9
+    b: 0.3
+    a: 1
   OutlineWidth: 0.1
   OutlineHardness: 0.85
 --- !u!84 &1024571003
@@ -593,6 +625,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 28985543}
     m_Modifications:
+    - target: {fileID: -7077912997499189128, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
+      propertyPath: selectionColour.b
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7077912997499189128, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
+      propertyPath: selectionColour.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7077912997499189128, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
+      propertyPath: selectionColour.r
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
       propertyPath: m_Name
       value: Diamond_A
@@ -615,19 +659,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -639,7 +683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fc7fe00fc696dbb44af5aaf757154341, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -739,19 +783,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -763,7 +807,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478722371771698408, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
+      propertyPath: selectionColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478722371771698408, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
+      propertyPath: selectionColour.b
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478722371771698408, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
+      propertyPath: selectionColour.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478722371771698408, guid: 9f092b65c49dcb54da3fa61ef0ac56ab, type: 3}
+      propertyPath: selectionColour.r
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
