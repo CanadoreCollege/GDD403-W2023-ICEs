@@ -25,10 +25,10 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
-        if (startFacing != isFaceUp)
-        {
-            Flip();
-        }
+        //if (startFacing != isFaceUp)
+        //{
+        //    Flip();
+        //}
     }
 
     public void Flip()
@@ -80,11 +80,30 @@ public class Card : MonoBehaviour
 
     void OnMouseEnter()
     {
+        EnableSelectionOutline();
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Flip();
+        }
+    }
+
+    void OnMouseExit()
+    {
+        DisableSelectionOutline();
+    }
+
+    // External Code
+
+    private void EnableSelectionOutline()
+    {
         Ray ray = selectionOutline.cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-
             selectionOutline.TargetRenderer = hit.transform.GetComponent<Renderer>();
             if (selectionOutline.lastTarget == null) selectionOutline.lastTarget = selectionOutline.TargetRenderer;
             if (selectionOutline.SelectionMode == SelMode.AndChildren)
@@ -93,6 +112,7 @@ public class Card : MonoBehaviour
                 {
                     Array.Clear(selectionOutline.ChildrenRenderers, 0, selectionOutline.ChildrenRenderers.Length);
                 }
+
                 selectionOutline.ChildrenRenderers = hit.transform.GetComponentsInChildren<Renderer>();
             }
 
@@ -101,6 +121,7 @@ public class Card : MonoBehaviour
             {
                 selectionOutline.SetTarget();
             }
+
             selectionOutline.lastTarget = selectionOutline.TargetRenderer;
         }
         else
@@ -114,7 +135,7 @@ public class Card : MonoBehaviour
         }
     }
 
-    void OnMouseExit()
+    private void DisableSelectionOutline()
     {
         if (selectionOutline.Selected)
         {
