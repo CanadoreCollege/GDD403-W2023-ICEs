@@ -1,36 +1,58 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    // public instance Members
+
     [Header("Card Properties")]
     public string rankName;
     public string suit;
     public int value;
     public bool isFaceUp;
 
-    private bool startFacing;
+    public bool startFacing;
+
+    [Header("Selection Properties")]
+    public SelectionOutline selectionOutline;
 
     void Start()
     {
         Initialize();
+        selectionOutline = FindObjectOfType<SelectionOutline>();
+    }
+
+    private void Update()
+    {
+        if (startFacing != isFaceUp)
+        {
+            Flip();
+        }
+    }
+
+    public void Flip()
+    {
+        transform.position = new Vector3(transform.position.x, 7.5f, transform.position.z);
+        transform.localRotation = Quaternion.Euler(0, 0, Convert.ToInt32(isFaceUp) * 180);
+        isFaceUp = !isFaceUp;
+    }
+
+    string toString()
+    {
+        return rankName + " of " + suit;
     }
 
     private void Initialize()
     {
-        var suitRankStrings = name.Split("_");
+        var split = name.Split('_');
 
-        var numberWords = new[]
-        {
-            "Zero", "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"
-        };
+        suit = split[0];
 
-        suit = suitRankStrings[0];
+        String[] numberWords = { "Zero", "Ace", "Deuce", "Three", "Four", "Five", "Six",
+                                "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
 
-        switch (suitRankStrings[1])
+        switch (split[1])
         {
             case "A":
                 value = 1;
@@ -45,9 +67,8 @@ public class Card : MonoBehaviour
                 value = 13;
                 break;
             default:
-                suit = suitRankStrings[0];
-                Int32.TryParse(suitRankStrings[1], out value); // convert to an int
-
+                rankName = split[1];
+                Int32.TryParse(rankName, out value);
                 break;
         }
 
@@ -57,23 +78,48 @@ public class Card : MonoBehaviour
         startFacing = isFaceUp;
     }
 
-    public void Flip()
+    void OnMouseEnter()
     {
-        transform.position = new Vector3(transform.position.x, 7.5f, transform.position.z);
-        transform.localRotation = Quaternion.Euler(0.0f, 0.0f, (isFaceUp) ? 0.0f : 180.0f); // ternary operator
-    }
-
-    void Update()
-    {
-        if (startFacing != isFaceUp)
+        Ray ray = selectionOutline.cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
         {
-            Flip();
-            startFacing = isFaceUp;
+
+            selectionOutline.TargetRenderer = hit.transform.GetComponent<Renderer>();
+            if (selectionOutline.lastTarget == null) selectionOutline.lastTarget = selectionOutline.TargetRenderer;
+            if (selectionOutline.SelectionMode == SelMode.AndChildren)
+            {
+                if (selectionOutline.ChildrenRenderers != null)
+                {
+                    Array.Clear(selectionOutline.ChildrenRenderers, 0, selectionOutline.ChildrenRenderers.Length);
+                }
+                selectionOutline.ChildrenRenderers = hit.transform.GetComponentsInChildren<Renderer>();
+            }
+
+
+            if (selectionOutline.TargetRenderer != selectionOutline.lastTarget || !selectionOutline.Selected)
+            {
+                selectionOutline.SetTarget();
+            }
+            selectionOutline.lastTarget = selectionOutline.TargetRenderer;
+        }
+        else
+        {
+            selectionOutline.TargetRenderer = null;
+            selectionOutline.lastTarget = null;
+            if (selectionOutline.Selected)
+            {
+                selectionOutline.ClearTarget();
+            }
         }
     }
 
-    public override string ToString()
+    void OnMouseExit()
     {
-        return $"{rankName} of {suit}s";
+        if (selectionOutline.Selected)
+        {
+            selectionOutline.ClearTarget();
+        }
     }
 }
+
