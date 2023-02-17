@@ -41,6 +41,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void OnResetButton_Pressed()
+    {
+
+    }
+
     private void Deal(List<Transform> layout, int cardNumber)
     {
         for (var i = 0; i < layout.Count; i++)
