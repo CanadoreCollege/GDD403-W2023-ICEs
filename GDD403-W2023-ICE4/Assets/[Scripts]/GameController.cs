@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    private StandardDeck deck;
+
     // Start is called before the first frame update
     void Start()
     {
-        StandardDeck deck = new StandardDeck(); // example of composition
+        deck = new StandardDeck(); // example of composition
     }
 }

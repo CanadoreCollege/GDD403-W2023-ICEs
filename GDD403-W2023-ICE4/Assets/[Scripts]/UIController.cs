@@ -20,4 +20,9 @@ public class UIController : MonoBehaviour
     {
         difficulty = (Difficulty)difficultyDropdown.value;
     }
+
+    public void OnStartButton_Pressed()
+    {
+        print("Start Button Pressed");
+    }
 }

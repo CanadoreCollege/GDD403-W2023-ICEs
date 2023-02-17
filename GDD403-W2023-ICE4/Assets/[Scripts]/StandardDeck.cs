@@ -11,6 +11,7 @@ public class StandardDeck : Stack<GameObject>
     private List<GameObject> _cardPrefabs;
 
     private Transform _cardParent;
+    private Transform _cardPrefabParent;
 
     // Constructor
     public StandardDeck()
@@ -19,6 +20,7 @@ public class StandardDeck : Stack<GameObject>
         _ranks = new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "A", "J", "Q", "K" };
         _cardPrefabs = new List<GameObject>(); // creates an empty container of List<GameObject> type
         _cardParent = GameObject.Find("[CARDS]").transform;
+        _cardPrefabParent = GameObject.Find("[CARD PREFABS]").transform;
 
         Load();
         Initialize();
@@ -29,6 +31,9 @@ public class StandardDeck : Stack<GameObject>
     // Public Methods
     public void Initialize()
     {
+
+        Shuffle();
+
         foreach (var card in _cardPrefabs)
         {
             var tempCard = MonoBehaviour.Instantiate(card);
@@ -68,9 +73,23 @@ public class StandardDeck : Stack<GameObject>
                 var cardPrefab = Resources.Load<GameObject>($"Prefabs/Cards/{_suits[i]}_{_ranks[j]}");
                 var card = MonoBehaviour.Instantiate(cardPrefab);
                 card.SetActive(false);
-                card.transform.SetParent(_cardParent);
+                card.transform.SetParent(_cardPrefabParent);
                 card.name = $"{_suits[i]}_{_ranks[j]}";
                 _cardPrefabs.Add(card);
+            }
+        }
+    }
+
+    private void Shuffle()
+    {
+        // Shuffle the _cardPrefabs List
+
+        for (var i = 0; i < _cardPrefabs.Count; i++)
+        {
+            var randomIndex = Random.Range(0, _cardPrefabs.Count);
+            if (i != randomIndex)
+            {
+                (_cardPrefabs[i], _cardPrefabs[randomIndex]) = (_cardPrefabs[randomIndex], _cardPrefabs[i]);
             }
         }
     }
