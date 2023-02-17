@@ -2177,6 +2177,7 @@ MonoBehaviour:
   difficulty: 0
   gameController: {fileID: 0}
   cardParent: {fileID: 0}
+  startButton: {fileID: 203770753}
 --- !u!1 &1250275311
 GameObject:
   m_ObjectHideFlags: 0

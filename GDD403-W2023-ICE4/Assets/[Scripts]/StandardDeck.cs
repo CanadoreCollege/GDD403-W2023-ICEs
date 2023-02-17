@@ -53,8 +53,7 @@ public class StandardDeck : Stack<GameObject>
         }
     }
 
-    // Private Methods
-    private void Clean()
+    public void Clean()
     {
         foreach (var card in this)
         {
@@ -64,6 +63,7 @@ public class StandardDeck : Stack<GameObject>
         Clear();
     }
 
+    // Private Methods
     private void Load()
     {
         for (var i = 0; i < _suits.Length; i++)

@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     public Difficulty difficulty;
     public GameController gameController;
     public Transform cardParent;
+    public GameObject startButton;
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +40,22 @@ public class UIController : MonoBehaviour
                 Deal(gameController.sixBySixLayout, 36);
                 break;
         }
+
+        startButton.SetActive(false);
     }
 
     public void OnResetButton_Pressed()
     {
+        gameController.deck.Clean();
 
+        foreach (Transform child in cardParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        gameController.deck.Initialize();
+
+        startButton.SetActive(true);
     }
 
     private void Deal(List<Transform> layout, int cardNumber)
