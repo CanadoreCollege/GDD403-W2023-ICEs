@@ -7,8 +7,7 @@ public class TankBehaviour : MonoBehaviour
     [Header("Movement Properties")]
     public float rotationRate;
     public float speed;
-
-    private Vector3 direction;
+    public Vector3 direction;
 
     // Update is called once per frame
     void Update()
