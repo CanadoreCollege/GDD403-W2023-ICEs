@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     public bool timerIsActive;
     public bool isLooping;
     public bool isReverse;
+    private Vector3 direction;
+    private float lookAngle;
 
     [Header("Path Points")] 
     public List<PathNode> pathNodes;
@@ -26,6 +28,7 @@ public class EnemyController : MonoBehaviour
         timerIsActive = true;
         isLooping = true;
         isReverse = false;
+        direction = Vector3.right;
 
         startPoint = transform.position;
         BuildPathNodes();
@@ -62,9 +65,19 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Move();
+        ChangeDirection();
     }
 
     void FixedUpdate()
+    {
+        UpdateTimer();
+    }
+
+    /// <summary>
+    /// Updates the timer.
+    /// Used for Movement and Turning.
+    /// </summary>
+    private void UpdateTimer()
     {
         if (timerIsActive)
         {
@@ -108,9 +121,23 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// This moves the tank from currentNode to nextNode (or previousNode).
+    /// The direction depends on the isReverse variable
+    /// </summary>
     private void Move()
     {
         transform.position = Vector2.Lerp(startPoint, endPoint, timer);
+    }
+
+    /// <summary>
+    /// This changes the direction that the Tank is "looking"
+    /// </summary>
+    private void ChangeDirection()
+    {
+        direction = Vector3.Normalize(endPoint - startPoint);
+        lookAngle = (Mathf.Atan2(direction.x, -direction.y) * Mathf.Rad2Deg) - 90.0f;
+        var targetAngle = Mathf.LerpAngle(transform.eulerAngles.z, lookAngle, timer);
+        transform.eulerAngles = new Vector3(0.0f, 0.0f, targetAngle);
     }
 }
