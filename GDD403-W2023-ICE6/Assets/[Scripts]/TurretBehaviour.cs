@@ -5,20 +5,13 @@ using UnityEngine;
 public class TurretBehaviour : MonoBehaviour
 {
     public Transform bulletSpawn;
-    public Transform bulletParent;
-    public GameObject bulletPrefab;
 
     private Vector3 target;
-
-    void Awake()
-    {
-        bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
-    }
-
+    private BulletManager bulletManager;
 
     void Start()
     {
-        bulletParent = GameObject.Find("[BULLETS]").transform;
+        bulletManager = FindObjectOfType<BulletManager>();
     }
 
     void Update()
@@ -40,9 +33,7 @@ public class TurretBehaviour : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // TODO: get bullet from the BulletPool here
-            var bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity, bulletParent);
-            
+            var bullet = bulletManager.GetBullet(bulletSpawn.position);
             var attackAngle = (transform.localEulerAngles.z + (transform.parent.transform.localEulerAngles.z)) * Mathf.Deg2Rad;
             var bulletDirection = new Vector3((float)Mathf.Cos(attackAngle), (float)Mathf.Sin(attackAngle), 0.0f);
             bullet.GetComponent<BulletController>().direction = bulletDirection;

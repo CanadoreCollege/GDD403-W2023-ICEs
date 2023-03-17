@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class BulletController : MonoBehaviour
 {
     public Vector3 direction;
     public float speed;
 
-    // Start is called before the first frame update
+    private BulletManager bulletManager;
+
     void Start()
+    {
+        bulletManager = FindObjectOfType<BulletManager>();
+    }
+
+    public void Activate()
     {
         Invoke("DestroyYourSelf", 5.0f);
     }
 
-    // TODO: need an public Activate method
-
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -30,8 +34,7 @@ public class BulletController : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            // TODO: move the bullet back to the Pool
-            Destroy(gameObject);
+            bulletManager.ReturnBullet(gameObject);
         }
     }
 
