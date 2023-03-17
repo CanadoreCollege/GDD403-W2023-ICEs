@@ -2524,10 +2524,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Black Tank
       objectReference: {fileID: 0}
-    - target: {fileID: 509038576605979607, guid: 8c4d0be26c91fa3418b9386248750907, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2541,9 +2537,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1335499467921371488, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      propertyPath: m_Layer
-      value: 9
+    - target: {fileID: 611346700, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 611346700, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1335499468328698161, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
       propertyPath: m_RootOrder
@@ -2555,7 +2555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335499468328698161, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.558
       objectReference: {fileID: 0}
     - target: {fileID: 1335499468328698161, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2593,114 +2593,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Tank
       objectReference: {fileID: 0}
-    - target: {fileID: 1335499468328698162, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335499468328698162, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1335499468328698162, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8945081457568175242}
-    - targetCorrespondingSourceObject: {fileID: 1335499468328698162, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8945081457568175241}
-    - targetCorrespondingSourceObject: {fileID: 1335499468328698162, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8945081457568175240}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
---- !u!1 &8945081457568175237 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1335499468328698162, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-  m_PrefabInstance: {fileID: 7974737501774173623}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8945081457568175240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945081457568175237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1547bea01957d6f40b911553d2081ac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &8945081457568175241
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945081457568175237}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.26, y: 1.04}
-    newSize: {x: 1.26, y: 1.04}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.26, y: 1.04}
-  m_EdgeRadius: 0
---- !u!50 &8945081457568175242
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945081457568175237}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0

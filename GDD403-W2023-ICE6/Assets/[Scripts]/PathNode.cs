@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PathNode
 {
-    public Vector2 position;
+    public Vector2 position; // data
     public PathNode next;
     public PathNode prev;
 
