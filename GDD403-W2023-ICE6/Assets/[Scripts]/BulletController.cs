@@ -17,7 +17,7 @@ public class BulletController : MonoBehaviour
 
     public void Activate()
     {
-        Invoke("DestroyYourSelf", 5.0f);
+        Invoke("DestroyYourSelf", 2.0f);
     }
 
     void Update()
