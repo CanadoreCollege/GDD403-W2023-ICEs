@@ -17,7 +17,6 @@ public class BulletController : MonoBehaviour
         smokePrefab = Resources.Load<GameObject>("Prefabs/Smoke");
     }
 
-
     void Start()
     {
         bulletManager = FindObjectOfType<BulletManager>();
@@ -52,6 +51,11 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<TankBehaviour>().health.TakeDamage(10);
+        }
+
         var explosionPoint = other.ClosestPoint(transform.position);
 
         DestroyYourSelf();

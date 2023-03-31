@@ -9,6 +9,9 @@ public class TankBehaviour : MonoBehaviour
     public float speed;
     public Vector3 direction;
 
+    [Header("Health System")] 
+    public HealthSystem health;
+
     // Update is called once per frame
     void Update()
     {
