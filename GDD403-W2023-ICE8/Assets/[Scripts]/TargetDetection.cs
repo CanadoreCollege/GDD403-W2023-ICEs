@@ -13,14 +13,21 @@ public class TargetDetection : MonoBehaviour
     public Transform targetTransform;
     public Transform turretTransform;
 
+    [Header("Bullet Firing Properties")] 
+    public float fireDelay;
+    public Transform bulletSpawn;
+
     private float targetDirection;
     private Vector2 targetDirectionVector;
     private Collider2D colliderName;
+    private BulletManager bulletManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        bulletManager = FindObjectOfType<BulletManager>();
+
         targetDirectionVector = Vector2.zero;
         targetDirection = 0;
 
@@ -47,6 +54,11 @@ public class TargetDetection : MonoBehaviour
             {
                 var targetAngle = targetDirection - transform.localEulerAngles.z - 90.0f;
                 turretTransform.localEulerAngles = new Vector3(0.0f, 0.0f, targetAngle);
+
+                if (Time.frameCount % fireDelay == 0)
+                {
+                    FireBullet(targetAngle);
+                }
             }
         }
     }
@@ -58,6 +70,15 @@ public class TargetDetection : MonoBehaviour
         {
             isTargetDetected = true;
         }
+    }
+
+    private void FireBullet(float targetAngle)
+    {
+        var bullet = bulletManager.GetBullet(bulletSpawn.position);
+        var attackAngle = (targetAngle + (transform.localEulerAngles.z)) * Mathf.Deg2Rad;
+        var bulletDirection = new Vector3((float)Mathf.Cos(attackAngle), (float)Mathf.Sin(attackAngle), 0.0f);
+        bullet.GetComponent<BulletController>().direction = bulletDirection;
+        bullet.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, (targetAngle + transform.localEulerAngles.z));
     }
 
     private void OnDrawGizmos()

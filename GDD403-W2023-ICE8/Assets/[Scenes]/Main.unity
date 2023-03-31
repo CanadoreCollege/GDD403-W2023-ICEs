@@ -1723,11 +1723,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &84927660 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1335499467921371502, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-  m_PrefabInstance: {fileID: 1257982096}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &465766855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1967,14 +1962,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1138689998, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 1335499467921371502, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1335499468328698161, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2024,9 +2011,13 @@ PrefabInstance:
       value: Red Tank
       objectReference: {fileID: 0}
     - target: {fileID: 4515922928567667619, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
-      propertyPath: turretTransform
+      propertyPath: fireDelay
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515922928567667619, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
+      propertyPath: bulletSpawn
       value: 
-      objectReference: {fileID: 84927660}
+      objectReference: {fileID: 2091323952}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2757,3 +2748,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2091323952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 51836123127561678, guid: 4630149ffa36d6447882988b464f3bbe, type: 3}
+  m_PrefabInstance: {fileID: 1257982096}
+  m_PrefabAsset: {fileID: 0}
