@@ -10,6 +10,7 @@ public class BulletController : MonoBehaviour
 
     private BulletManager bulletManager;
     private GameObject smokePrefab;
+    private Transform bulletParent;
 
     void Awake()
     {
@@ -20,10 +21,14 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         bulletManager = FindObjectOfType<BulletManager>();
+        bulletParent = GameObject.Find("[BULLETS]").transform;
     }
 
     public void Activate()
     {
+        var turretSound = GetComponent<AudioSource>();
+        turretSound.pitch = Random.Range(0.5f, 3.0f);
+        turretSound.Play();
         Invoke("DestroyYourSelf", 2.0f);
     }
 
@@ -51,9 +56,8 @@ public class BulletController : MonoBehaviour
 
         DestroyYourSelf();
 
-        print(explosionPoint);
-
-        Instantiate(smokePrefab, explosionPoint, Quaternion.identity);
+        // Create Smoke at the "hit" location
+        Instantiate(smokePrefab, explosionPoint, Quaternion.identity, bulletParent);
     }
 
 
