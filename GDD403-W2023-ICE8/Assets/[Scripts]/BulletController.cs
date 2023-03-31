@@ -9,6 +9,13 @@ public class BulletController : MonoBehaviour
     public float speed;
 
     private BulletManager bulletManager;
+    private GameObject smokePrefab;
+
+    void Awake()
+    {
+        smokePrefab = Resources.Load<GameObject>("Prefabs/Smoke");
+    }
+
 
     void Start()
     {
@@ -40,7 +47,13 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        var explosionPoint = other.ClosestPoint(transform.position);
+
         DestroyYourSelf();
+
+        print(explosionPoint);
+
+        Instantiate(smokePrefab, explosionPoint, Quaternion.identity);
     }
 
 
