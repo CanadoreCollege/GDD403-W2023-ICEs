@@ -6,6 +6,7 @@ public class Graph : MonoBehaviour
 {
     public List<GraphNode> nodes;
     public float radius;
+    public LayerMask graphLayerMask;
 
     // Start is called before the first frame update
     void Awake()
@@ -35,7 +36,7 @@ public class Graph : MonoBehaviour
                 // ignore the node itself
                 if (i != j)
                 {
-                    if (!Physics2D.Raycast(nodes[i].transform.position, Vector3.Normalize(nodes[j].transform.position - nodes[i].transform.position), radius))
+                    if (!Physics2D.Linecast(nodes[i].transform.position, nodes[j].transform.position, graphLayerMask))
                     {
                         if (Vector3.Distance(nodes[i].transform.position, nodes[j].transform.position) < radius)
                         {

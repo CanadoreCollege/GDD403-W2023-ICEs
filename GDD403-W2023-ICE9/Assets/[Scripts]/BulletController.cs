@@ -50,22 +50,26 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.gameObject.tag)
+        if (other.gameObject.tag != "Graph")
         {
-            case "Player":
-                other.gameObject.GetComponent<TankBehaviour>().health.TakeDamage(10);
-                break;
-            case "Enemy":
-                other.gameObject.GetComponent<EnemyController>().health.TakeDamage(10);
-                break;
+            switch (other.gameObject.tag)
+            {
+                case "Player":
+                    other.gameObject.GetComponent<TankBehaviour>().health.TakeDamage(10);
+                    break;
+                case "Enemy":
+                    other.gameObject.GetComponent<EnemyController>().health.TakeDamage(10);
+                    break;
+            }
+
+            var explosionPoint = other.ClosestPoint(transform.position);
+
+            DestroyYourSelf();
+
+            // Create Smoke at the "hit" location
+            Instantiate(smokePrefab, explosionPoint, Quaternion.identity, bulletParent);
         }
 
-        var explosionPoint = other.ClosestPoint(transform.position);
-
-        DestroyYourSelf();
-
-        // Create Smoke at the "hit" location
-        Instantiate(smokePrefab, explosionPoint, Quaternion.identity, bulletParent);
     }
 
 
